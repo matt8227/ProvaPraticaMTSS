@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+
+    <module name="Header">
+        <property name="headerFile" value="header.txt" />
+    </module>
+
+
+    <module name="TreeWalker">
+        <module name="BooleanExpressionComplexity">
+            <property name="max" value="5" />
+        </module>
+
+        <module name="CyclomaticComplexity">
+            <property name="max" value="4" />
+        </module>
+
+        <module name="MethodLength">
+            <property name="max" value="150" />
+        </module>
+
+        <module name="EmptyCatchBlock">
+            <property name="exceptionVariableName" value="expected|ignore" />
+        </module>
+
+        <module name="AvoidStarImport">
+            <property name="excludes" value="java.io,java.net,java.lang.Math" />
+        </module>
+
+        <module name="IllegalImport" />
+
+        <module name="NeedBraces" />
+    </module>
+
+
+    <module name="FileLength">
+        <property name="max" value="300" />
+    </module>
+
+    <module name="LineLength">
+        <property name="max" value="120" />
+    </module>
+
+    <!-- hate this btw, tabs>>spaces anyday-->
+    <module name="FileTabCharacter">
+        <property name="eachLine" value="true" />
+    </module>
+
+</module>
