@@ -1,0 +1,36 @@
+name: "Default pipeline"
+"on":
+  # Dato che gli unit test di questo progetto sono molto veloci, li facciamo eseguire su tutti i branch
+  push: 
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+  workflow_dispatch: #dovrebbe permettere di testare le github action senza commit
+jobs:
+  build:
+    runs-on: "ubuntu-latest"
+    steps:
+      # Informazioni per aiutare in caso di debug
+      - run: echo "Job triggered by ${{github.actor}} via ${{github.event_name}} on
+          branch ${{github.ref}}"
+      
+      # Setup dell'ambiente di test
+      - name: "Set up JDK 24"
+        uses: "actions/setup-java@v5"
+        with:
+          java-version: "24"
+          distribution: "temurin"
+          cache: "maven"
+      # Vari passi della pipeline 
+      - name: "Validating with Maven"
+        run: mvn validate
+      - name: "Compiling with Maven"
+        run: mvn compile
+      - name: "Testing with Maven"
+        run: mvn test 
+      - name: "Packaging with Maven"
+        run: mvn package
+      - name: "Verifying with Maven"
+        run: mvn verify 
