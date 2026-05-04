@@ -89,4 +89,42 @@ public class RomanPrinterTest
             assertEquals(results.get(digit), expectedResults.get(digit));
         }
     }
+
+    @Test
+    public void printingNumbersTest() {
+        // Arrange
+        HashMap<Integer, String> expectedResults = new HashMap<>();
+        expectedResults.put(42,
+
+                "__   __  _         _____    _____  \n" +
+                        "\\ \\ / / | |       |_   _|  |_   _| \n" +
+                        " \\ V /  | |         | |      | |   \n" +
+                        "  > <   | |         | |      | |   \n" +
+                        " / . \\  | |____    _| |_    _| |_  \n" +
+                        "/_/ \\_\\ |______|  |_____|  |_____| \n");
+
+        expectedResults.put(494, "   _____    _____   __   __   _____    _____   __      __ \n" +
+                "  / ____|  |  __ \\  \\ \\ / /  / ____|  |_   _|  \\ \\    / / \n" +
+                " | |       | |  | |  \\ V /  | |         | |     \\ \\  / /  \n" +
+                " | |       | |  | |   > <   | |         | |      \\ \\/ /   \n" +
+                " | |____   | |__| |  / . \\  | |____    _| |_      \\  /    \n" +
+                "  \\_____|  |_____/  /_/ \\_\\  \\_____|  |_____|      \\/     \n");
+
+        Integer[] numbersToCheck = expectedResults.keySet()
+                .stream()
+                .sorted()
+                .toArray(Integer[]::new);
+
+        HashMap<Integer, String> results = new HashMap<>();
+
+        // Act
+        for (Integer number : numbersToCheck) {
+            results.put(number, RomanPrinter.print(number));
+        }
+
+        // Assert
+        for (Integer number : numbersToCheck) {
+            assertEquals(results.get(number), expectedResults.get(number));
+        }
+    }
 }
