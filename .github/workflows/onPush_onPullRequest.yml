@@ -12,6 +12,8 @@ jobs:
   build:
     runs-on: "ubuntu-latest"
     steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v6"
       # Informazioni per aiutare in caso di debug
       - run: echo "Job triggered by ${{github.actor}} via ${{github.event_name}} on
           branch ${{github.ref}}"
