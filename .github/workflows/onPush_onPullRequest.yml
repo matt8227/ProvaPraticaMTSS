@@ -1,17 +1,20 @@
 name: "Default pipeline"
 "on":
-  # Dato che gli unit test di questo progetto sono molto veloci, li facciamo eseguire su tutti i branch
   push: 
+    # Dato che i nostri unit test sono molto veloci, configuriamo l'esecuzione in ogni branch. 
+    # Notare che ** serve per matchare i branch con / all'interno del nome
     branches:
-      - "*"
+      - "**"
   pull_request:
     branches:
-      - "*"
+      - "**"
   workflow_dispatch: #dovrebbe permettere di testare le github action senza commit
 jobs:
   build:
     runs-on: "ubuntu-latest"
     steps:
+      - name: "Checkout code"
+        uses: "actions/checkout@v6"
       # Informazioni per aiutare in caso di debug
       - run: echo "Job triggered by ${{github.actor}} via ${{github.event_name}} on
           branch ${{github.ref}}"
