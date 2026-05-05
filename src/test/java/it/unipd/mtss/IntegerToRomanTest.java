@@ -43,5 +43,27 @@ public class IntegerToRomanTest {
         assertEquals(results, expectedResults);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void numberTooBigTest(){
+        //Arrange
+        Integer bigNumber = 1001;
+
+        //Act
+        IntegerToRoman.convert(bigNumber);
+
+        //Arrange è svolto da junit "in automatico" grazie all'element-value pair dell'annotation.
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void negativeNumberTest(){
+        //Arrange
+        Integer negativeNumber = -100;
+        
+        //Act
+        IntegerToRoman.convert(negativeNumber);
+
+        //Arrange è svolto da junit "in automatico" grazie all'element-value pair dell'annotation.
+    }
+
 }
 
