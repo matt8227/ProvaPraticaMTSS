@@ -36,4 +36,6 @@ jobs:
       - name: "Packaging with Maven"
         run: mvn package
       - name: "Verifying with Maven"
-        run: mvn verify 
+        run: mvn verify  jacoco:report coveralls:report
+        env:
+          COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
