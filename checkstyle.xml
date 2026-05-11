@@ -3,7 +3,7 @@
 <module name="Checker">
 
     <module name="Header">
-        <property name="headerFile" value="header.txt" />
+        <property name="headerFile" value="LICENSE.txt" />
     </module>
 
 
